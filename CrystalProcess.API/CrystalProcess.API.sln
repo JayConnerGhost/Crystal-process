@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrystalProcess.API", "CrystalProcess.API\CrystalProcess.API.csproj", "{9F88C3F8-4920-4F97-A731-1E2D9A98CBEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrystalProcess.API.Tests", "CrystalProcess.API.Tests\CrystalProcess.API.Tests.csproj", "{3E703104-FC99-471B-B0C9-8FF320A269E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalProcess.Models", "CrystalProcess.Models\CrystalProcess.Models.csproj", "{574F0CDD-F843-4011-BA7C-680D4C5AD833}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalProcess.API.Tests.Utils", "CrystalProcess.API.Tests.Utils\CrystalProcess.API.Tests.Utils.csproj", "{DD7C35A3-D5AA-489B-8BC3-21CE9C7E894B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalProcess.Data", "CrystalProcess.Data\CrystalProcess.Data.csproj", "{F44E4CF9-E9BC-473D-9022-0B05596187DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F88C3F8-4920-4F97-A731-1E2D9A98CBEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F88C3F8-4920-4F97-A731-1E2D9A98CBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F88C3F8-4920-4F97-A731-1E2D9A98CBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F88C3F8-4920-4F97-A731-1E2D9A98CBEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E703104-FC99-471B-B0C9-8FF320A269E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E703104-FC99-471B-B0C9-8FF320A269E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E703104-FC99-471B-B0C9-8FF320A269E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E703104-FC99-471B-B0C9-8FF320A269E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{574F0CDD-F843-4011-BA7C-680D4C5AD833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574F0CDD-F843-4011-BA7C-680D4C5AD833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574F0CDD-F843-4011-BA7C-680D4C5AD833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574F0CDD-F843-4011-BA7C-680D4C5AD833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD7C35A3-D5AA-489B-8BC3-21CE9C7E894B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD7C35A3-D5AA-489B-8BC3-21CE9C7E894B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD7C35A3-D5AA-489B-8BC3-21CE9C7E894B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD7C35A3-D5AA-489B-8BC3-21CE9C7E894B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F44E4CF9-E9BC-473D-9022-0B05596187DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F44E4CF9-E9BC-473D-9022-0B05596187DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F44E4CF9-E9BC-473D-9022-0B05596187DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F44E4CF9-E9BC-473D-9022-0B05596187DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AFCDD2B3-E86F-4416-B9DD-77A913C2F0FC}
+	EndGlobalSection
+EndGlobal
