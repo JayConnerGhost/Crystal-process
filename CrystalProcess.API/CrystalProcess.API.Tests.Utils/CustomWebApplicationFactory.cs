@@ -12,14 +12,7 @@ namespace CrystalProcess.API.Tests.Utils
 {
     public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
     {
-        //        protected override IWebHostBuilder CreateWebHostBuilder()
-        //        {
-        //            return WebHost.CreateDefaultBuilder()
-        //                .UseStartup<TStartup>();
-        //
-        //        }
 
-        //trying to fix db issue 
         protected override IHostBuilder CreateHostBuilder()
         {
             return base.CreateHostBuilder()

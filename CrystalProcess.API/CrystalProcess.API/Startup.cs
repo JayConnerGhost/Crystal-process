@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CrystalProcess.Data;
+using CrystalProcess.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -44,9 +45,8 @@ namespace CrystalProcess.API
             {
                 services.AddDbContext<ApplicationDbContext>
                     (options => options.UseSqlServer(Configuration.GetConnectionString("CrystalProcessDatabase")));
-
             }
-
+            services.AddScoped<IStageRepository, StageRepository>();
             services.AddControllers();
         }
 

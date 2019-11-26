@@ -12,6 +12,7 @@ namespace CrystalProcess.API.Tests
     {
         private CustomWebApplicationFactory<Startup> _factory = new CustomWebApplicationFactory<Startup>();
 
+
         [Fact]
         public async Task Can_get_swim_lanes()
         {

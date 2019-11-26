@@ -6,6 +6,7 @@ using CrystalProcess.API.Requests;
 using CrystalProcess.API.Responses;
 using CrystalProcess.Data;
 using CrystalProcess.Models;
+using CrystalProcess.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,12 +18,12 @@ namespace CrystalProcess.API.Controllers
     [ApiController]
     public class StagesController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IStageRepository _repository;
         private readonly ILogger<StagesController> _logger;
 
-        public StagesController(ApplicationDbContext context, ILogger<StagesController> logger)
+        public StagesController(IStageRepository repository, ILogger<StagesController> logger)
         {
-            _context = context;
+            _repository = repository;
             _logger = logger;
         }
 
@@ -32,7 +33,7 @@ namespace CrystalProcess.API.Controllers
             List<Stage> stages=null;
             try
             {
-                stages = await _context.Stages.ToListAsync();
+                stages = (List<Stage>) await _repository.Get();
             }
             catch (Exception ex)
             {
@@ -53,8 +54,8 @@ namespace CrystalProcess.API.Controllers
             var entity = new Stage() {Title = request.Title, Order = request.Order};
             try
             {
-                _context.Stages.Add(entity);
-                await _context.SaveChangesAsync();
+                _repository.Add(entity);
+                
             }
             catch (Exception ex)
             {

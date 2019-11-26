@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CrystalProcess.Data\CrystalProcess.Data.csproj" />
+    <ProjectReference Include="..\CrystalProcess.Repositories\CrystalProcess.Repositories.csproj" />
   </ItemGroup>
 
 </Project>
