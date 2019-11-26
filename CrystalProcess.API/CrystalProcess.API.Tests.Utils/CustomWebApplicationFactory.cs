@@ -30,22 +30,7 @@ namespace CrystalProcess.API.Tests.Utils
         {
             builder.ConfigureServices(services =>
             {
-
-                //add startup filter 
-
-                // Create a new service provider.
-                var serviceProvider = new ServiceCollection()
-                    .AddEntityFrameworkInMemoryDatabase()
-                    .BuildServiceProvider();
-
-                // Add a database context (ApplicationDbContext) using an in-memory 
-                // database for testing.
-                services.AddDbContext<ApplicationDbContext>(options =>
-                {
-                    options.UseInMemoryDatabase("InMemoryDbForTesting");
-                    options.UseInternalServiceProvider(serviceProvider);
-                });
-
+                
                 var sp = services.BuildServiceProvider();
 
                 // Create a scope to obtain a reference to the database

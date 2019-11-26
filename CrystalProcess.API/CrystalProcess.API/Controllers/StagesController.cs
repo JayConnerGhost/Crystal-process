@@ -9,6 +9,7 @@ using CrystalProcess.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace CrystalProcess.API.Controllers
 {
@@ -17,10 +18,12 @@ namespace CrystalProcess.API.Controllers
     public class StagesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<StagesController> _logger;
 
-        public StagesController(ApplicationDbContext context)
+        public StagesController(ApplicationDbContext context, ILogger<StagesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -33,7 +36,7 @@ namespace CrystalProcess.API.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                _logger.LogError(Guid.NewGuid().ToString(), ex);
             }
 
             return Ok(stages);
@@ -55,7 +58,7 @@ namespace CrystalProcess.API.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+               _logger.LogError(Guid.NewGuid().ToString(),ex);
             }
 
             return Created(Url.RouteUrl(entity.Id),ConvertResponse(entity));

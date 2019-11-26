@@ -18,9 +18,7 @@ namespace CrystalProcess.API.Tests
             //arrange
             var swimLaneExpectedCount=2;
             var client = Utilities<Startup>.CreateClient();
-            //set up swim lanes -calling controller 
-            //
-            //2x posts
+       
             var postRequest1 = new
             {
                 Url = "api/stages",
@@ -50,8 +48,7 @@ namespace CrystalProcess.API.Tests
                 Url="api/stages"
             };
             var response= await client.GetAsync(request.Url);
-
-
+            
             //assert
             var lanes= JsonConvert.DeserializeObject<List<Stage>>(await response.Content.ReadAsStringAsync()); 
             Assert.Equal(swimLaneExpectedCount,lanes.Count);

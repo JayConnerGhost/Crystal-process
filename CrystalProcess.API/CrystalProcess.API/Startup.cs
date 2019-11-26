@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace CrystalProcess.API
 {
@@ -30,7 +29,7 @@ namespace CrystalProcess.API
             //HACK - till microsoft issue guidence for not being able to override
             //the database provider in new webApplicationFactory.
             IServiceProvider serviceProvider = services.BuildServiceProvider();
-            var env = serviceProvider.GetService<IHostingEnvironment>();
+            var env = serviceProvider.GetService<IWebHostEnvironment>();
             //logic in here to configure correct DB 
             if (env.IsEnvironment("IntegrationTests"))
             {
