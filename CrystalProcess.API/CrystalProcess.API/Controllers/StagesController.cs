@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using CrystalProcess.API.Requests;
 using CrystalProcess.API.Responses;
-using CrystalProcess.Data;
 using CrystalProcess.Models;
 using CrystalProcess.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace CrystalProcess.API.Controllers
