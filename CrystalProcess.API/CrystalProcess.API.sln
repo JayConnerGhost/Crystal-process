@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalProcess.Data", "Crys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalProcess.Repositories", "CrystalProcess.Repositories\CrystalProcess.Repositories.csproj", "{AF361970-FF80-4C2A-A926-B4FCF93882D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrystalProcess.Controllers.Tests", "CrystalProcess.Controllers.Tests\CrystalProcess.Controllers.Tests.csproj", "{D03E804B-8D3E-4F42-83FE-CBBF2E3BFB31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{AF361970-FF80-4C2A-A926-B4FCF93882D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF361970-FF80-4C2A-A926-B4FCF93882D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF361970-FF80-4C2A-A926-B4FCF93882D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D03E804B-8D3E-4F42-83FE-CBBF2E3BFB31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D03E804B-8D3E-4F42-83FE-CBBF2E3BFB31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D03E804B-8D3E-4F42-83FE-CBBF2E3BFB31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D03E804B-8D3E-4F42-83FE-CBBF2E3BFB31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -33,7 +33,8 @@ namespace CrystalProcess.API.Controllers
             List<Stage> stages=null;
             try
             {
-                stages = (List<Stage>) await _repository.Get();
+                var result = await _repository.Get();
+                stages =  new List<Stage>(result.OrderBy(x=>x.Order));
             }
             catch (Exception ex)
             {
