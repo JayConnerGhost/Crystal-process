@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CrystalProcess.API.Requests;
-using CrystalProcess.API.Responses;
 using CrystalProcess.Models;
 using CrystalProcess.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -38,7 +37,7 @@ namespace CrystalProcess.API.Controllers
                 _logger.LogError(Guid.NewGuid().ToString(), ex);
             }
 
-            return Ok(ConvertReponses(stages));
+            return Ok(ConvertStageResponses(stages));
         }
 
         [HttpPost]
@@ -64,22 +63,5 @@ namespace CrystalProcess.API.Controllers
         }
 
         
-    }
-
-    public class CustomControllerBase:ControllerBase
-    {
-        protected List<StageResponse> ConvertReponses(List<Stage> stages)
-        {
-            return stages.Select(ConvertResponse).ToList();
-        }
-        protected StageResponse ConvertResponse(Stage entity)
-        {
-            return new StageResponse()
-            {
-                Order = entity.Order,
-                Title = entity.Title,
-                Id = entity.Id
-            };
-        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CrystalProcess.API.Responses
 {
-    public class StageResponse
+    public class StageStageResponse
     {
         public int Id { get; set; }
         public string Title { get; set; }

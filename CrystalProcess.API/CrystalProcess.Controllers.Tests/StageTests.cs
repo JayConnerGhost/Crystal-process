@@ -36,7 +36,7 @@ namespace CrystalProcess.Controllers.Tests
 
             //Assert
             var receivedStages = result as OkObjectResult;
-            var data = (List<StageResponse>) receivedStages.Value;
+            var data = (List<StageStageResponse>) receivedStages.Value;
             Assert.Equal(0,data[0].Order);
             Assert.Equal(1,data[1].Order);
             Assert.Equal(2, data[2].Order);
