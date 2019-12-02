@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CrystalProcess.API.Tests.Utils;
 using CrystalProcess.Models;
@@ -19,7 +20,11 @@ namespace CrystalProcess.API.Tests
             //arrange
             var swimLaneExpectedCount=2;
             var client = Utilities<Startup>.CreateClient();
-       
+            var token = await Utilities<Startup>.RegisterandLoginUser("ghost", "test", client);
+            //Attach bearer token 
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", Utilities<Startup>.StripTokenValue(token));
+
             var postRequest1 = new
             {
                 Url = "api/stages",
@@ -40,8 +45,9 @@ namespace CrystalProcess.API.Tests
                 }
             };
 
-            await client.PostAsync(postRequest1.Url, ContentHelper.GetStringContent(postRequest1.Body));
-            await client.PostAsync(postRequest2.Url, ContentHelper.GetStringContent(postRequest2.Body));
+            var stringContent = ContentHelper.GetStringContent(postRequest1.Body);
+            var httpResponseMessage = await client.PostAsync(postRequest1.Url, stringContent);
+            var responseMessage = await client.PostAsync(postRequest2.Url, ContentHelper.GetStringContent(postRequest2.Body));
 
             //act
             var request=new

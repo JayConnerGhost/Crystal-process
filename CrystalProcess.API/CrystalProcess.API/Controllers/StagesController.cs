@@ -5,22 +5,28 @@ using System.Threading.Tasks;
 using CrystalProcess.API.Requests;
 using CrystalProcess.Models;
 using CrystalProcess.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace CrystalProcess.API.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
-    public class StagesStagesController : CustomStagesControllerBase
+    
+    public class StagesController : CustomStagesControllerBase
     {
         private readonly IStageRepository _repository;
-        private readonly ILogger<StagesStagesController> _logger;
+        private readonly ILogger<StagesController> _logger;
 
-        public StagesStagesController(IStageRepository repository, ILogger<StagesStagesController> logger)
+        public StagesController(IStageRepository repository, ILogger<StagesController> logger)
         {
             _repository = repository;
             _logger = logger;
+            _logger.LogInformation("in stages controller");
         }
 
         [HttpGet]

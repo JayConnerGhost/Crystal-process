@@ -21,8 +21,8 @@ namespace CrystalProcess.Controllers.Tests
         {
             //arrange 
             var repositoryFake=NSubstitute.Substitute.For<IStageRepository>();
-            var logger= NSubstitute.Substitute.For<ILogger<StagesStagesController>>();
-            var sut=new StagesStagesController(repositoryFake,logger);
+            var logger= NSubstitute.Substitute.For<ILogger<StagesController>>();
+            var sut=new StagesController(repositoryFake,logger);
             repositoryFake.Get().Returns(new List<Stage>
             {
                 new Stage{Id=2,Order=2,Title="test 2"},
