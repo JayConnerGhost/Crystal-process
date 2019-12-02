@@ -12,12 +12,12 @@ namespace CrystalProcess.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StagesController : CustomControllerBase
+    public class StagesStagesController : CustomStagesControllerBase
     {
         private readonly IStageRepository _repository;
-        private readonly ILogger<StagesController> _logger;
+        private readonly ILogger<StagesStagesController> _logger;
 
-        public StagesController(IStageRepository repository, ILogger<StagesController> logger)
+        public StagesStagesController(IStageRepository repository, ILogger<StagesStagesController> logger)
         {
             _repository = repository;
             _logger = logger;

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CrystalProcess.API.Controllers
 {
-    public class CustomControllerBase:ControllerBase
+    public class CustomStagesControllerBase:ControllerBase
     {
         protected List<StageStageResponse> ConvertStageResponses(List<Stage> stages)
         {
