@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CrystalProcess.API.Controllers;
+using CrystalProcess.API.Responses;
 using CrystalProcess.Models;
 using CrystalProcess.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -35,7 +36,7 @@ namespace CrystalProcess.Controllers.Tests
 
             //Assert
             var receivedStages = result as OkObjectResult;
-            var data = (List<Stage>) receivedStages.Value;
+            var data = (List<StageResponse>) receivedStages.Value;
             Assert.Equal(0,data[0].Order);
             Assert.Equal(1,data[1].Order);
             Assert.Equal(2, data[2].Order);

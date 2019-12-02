@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using CrystalProcess.API.Requests;
 using CrystalProcess.API.Responses;
@@ -16,7 +17,7 @@ namespace CrystalProcess.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StagesController : ControllerBase
+    public class StagesController : CustomControllerBase
     {
         private readonly IStageRepository _repository;
         private readonly ILogger<StagesController> _logger;
@@ -41,7 +42,7 @@ namespace CrystalProcess.API.Controllers
                 _logger.LogError(Guid.NewGuid().ToString(), ex);
             }
 
-            return Ok(stages);
+            return Ok(ConvertReponses(stages));
         }
 
         [HttpPost]
@@ -55,7 +56,7 @@ namespace CrystalProcess.API.Controllers
             var entity = new Stage() {Title = request.Title, Order = request.Order};
             try
             {
-                _repository.Add(entity);
+                await _repository.Add(entity);
                 
             }
             catch (Exception ex)
@@ -66,12 +67,21 @@ namespace CrystalProcess.API.Controllers
             return Created(Url.RouteUrl(entity.Id),ConvertResponse(entity));
         }
 
-        private NewStageResponse ConvertResponse(Stage entity)
+        
+    }
+
+    public class CustomControllerBase:ControllerBase
+    {
+        protected List<StageResponse> ConvertReponses(List<Stage> stages)
         {
-            return new NewStageResponse()
+            return stages.Select(ConvertResponse).ToList();
+        }
+        protected StageResponse ConvertResponse(Stage entity)
+        {
+            return new StageResponse()
             {
                 Order = entity.Order,
-                Title=entity.Title,
+                Title = entity.Title,
                 Id = entity.Id
             };
         }
