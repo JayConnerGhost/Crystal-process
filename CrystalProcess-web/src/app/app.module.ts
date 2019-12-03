@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import {FormsModule} from '@angular/forms';
 
-import {MeterialModule} from './meterial/meterial.module';
+import {MaterialModule} from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import {RoutingModule} from './routing/routing.module';
@@ -20,7 +20,7 @@ import {RoutingModule} from './routing/routing.module';
   imports: [
     BrowserModule,
     FormsModule,
-    MeterialModule,
+    MaterialModule,
     BrowserAnimationsModule,
     RoutingModule,
   ],
