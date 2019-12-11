@@ -13,7 +13,8 @@ using Microsoft.Extensions.Logging;
 
 namespace CrystalProcess.API.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     

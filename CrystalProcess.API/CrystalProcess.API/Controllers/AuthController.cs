@@ -8,24 +8,29 @@ using System.Threading.Tasks;
 using CrystalProcess.API.Requests;
 using CrystalProcess.Models;
 using CrystalProcess.Repositories;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace CrystalProcess.API.Controllers
 {
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly ILogger<AuthController> _logger;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, ILogger<AuthController> logger)
         {
             _repo = repo;
             _config = config;
+            _logger = logger;
         }
 
         [HttpPost("register")]
@@ -49,14 +54,27 @@ namespace CrystalProcess.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]UserForLoginRequest userForLogin)
         {
-
-            var userFromRepo = await _repo.Login(userForLogin.Username.ToLower(), userForLogin.Password);
-
-            if (userFromRepo == null)
+            User userFromRepo=null;
+            SigningCredentials creds = null;
+            
+            try
             {
-                return Unauthorized();
-            }
+                userFromRepo = await _repo.Login(userForLogin.Username.ToLower(), userForLogin.Password);
 
+                if (userFromRepo == null)
+                {
+                    return Unauthorized();
+                }
+
+               
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Secret").Value));
+
+                creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(Guid.NewGuid().ToString(),e);
+            }
             var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
@@ -65,17 +83,12 @@ namespace CrystalProcess.API.Controllers
             };
             claims.AddRange(userFromRepo.Roles.Select(role => new Claim(ClaimTypes.Role, role.Name.ToString())));
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Secret").Value));
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = creds
             };
-
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var token = tokenHandler.CreateToken((tokenDescriptor));

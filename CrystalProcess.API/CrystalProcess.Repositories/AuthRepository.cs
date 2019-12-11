@@ -42,9 +42,10 @@ namespace CrystalProcess.Repositories
 
         public async Task<User> Login(string username, string password)
         {
-            var user = await _context.Users
+            var task = _context.Users
                 .Include(x => x.Roles)
                 .FirstOrDefaultAsync(x => x.Username == username);
+            var user = await task;
 
             if (user == null)
             {

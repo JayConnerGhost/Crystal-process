@@ -50,6 +50,19 @@ namespace CrystalProcess.API
                 services.AddDbContext<ApplicationDbContext>
                     (options => options.UseSqlServer(Configuration.GetConnectionString("CrystalProcessDatabase")));
             }
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins(
+                           
+                            "http://localhost:4200",
+                            "http://www.katiekatcoder.co.uk"
+                        )
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
             //Appsettings
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -65,8 +78,8 @@ namespace CrystalProcess.API
                 })
                 .AddJwtBearer(x =>
                 {
-                    x.RequireHttpsMetadata = false;
-                    x.SaveToken = true;
+                   // x.RequireHttpsMetadata = false;
+                   // x.SaveToken = true;
                     x.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
@@ -93,10 +106,12 @@ namespace CrystalProcess.API
             {
                 //code in here to override database service with inmemory db.
             }
-               
+
 
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCors("CorsPolicy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

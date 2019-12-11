@@ -8,13 +8,13 @@ namespace CrystalProcess.API.Controllers
 {
     public class CustomStagesControllerBase:ControllerBase
     {
-        protected List<StageStageResponse> ConvertStageResponses(List<Stage> stages)
+        protected List<StageResponse> ConvertStageResponses(List<Stage> stages)
         {
             return stages.Select(ConvertResponse).ToList();
         }
-        protected StageStageResponse ConvertResponse(Stage entity)
+        protected StageResponse ConvertResponse(Stage entity)
         {
-            return new StageStageResponse()
+            return new StageResponse()
             {
                 Order = entity.Order,
                 Title = entity.Title,
