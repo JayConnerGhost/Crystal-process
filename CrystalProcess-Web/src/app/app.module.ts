@@ -10,12 +10,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
 import { SecurityComponent } from './security/security.component';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
 // noinspection AngularInvalidImportedOrDeclaredSymbol
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SecurityComponent,
+    LoginComponent,
+    RegisterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -24,9 +31,15 @@ import { SecurityComponent } from './security/security.component';
     NgbModule,
     FlexLayoutModule,
     RouterModule,
-    RoutingModule
+    RoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: JWT_OPTIONS, useValue: JWT_OPTIONS
+    },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
