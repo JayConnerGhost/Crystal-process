@@ -9,11 +9,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {RoutingModule} from './routing/routing.module';
+import { SecurityComponent } from './security/security.component';
 // noinspection AngularInvalidImportedOrDeclaredSymbol
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    SecurityComponent,
   ],
   imports: [
     BrowserModule,
