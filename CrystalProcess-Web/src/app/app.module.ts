@@ -14,6 +14,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 // noinspection AngularInvalidImportedOrDeclaredSymbol
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     FlexLayoutModule,
     RouterModule,
     RoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     {
