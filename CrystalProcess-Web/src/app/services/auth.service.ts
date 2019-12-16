@@ -32,7 +32,7 @@ export class AuthService {
       .pipe(
       map((response: any) => {
         const user = response;
-        if(user) {
+        if (user) {
           localStorage.setItem('token', user.token);
           localStorage.setItem('username', user.username);
           this.decodedToken = this.jwtHelper.decodeToken(user.token);

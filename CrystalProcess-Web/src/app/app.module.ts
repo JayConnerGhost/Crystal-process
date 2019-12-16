@@ -14,7 +14,10 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { WallComponent } from './wall/wall.component';
+import { LaneComponent } from './lane/lane.component';
+import {AuthInterceptor} from './AuthIntercepter';
 // noinspection AngularInvalidImportedOrDeclaredSymbol
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     SecurityComponent,
     LoginComponent,
     RegisterComponent,
+    WallComponent,
+    LaneComponent,
 
   ],
   imports: [
@@ -40,7 +45,12 @@ import { HttpClientModule } from '@angular/common/http';
     {
       provide: JWT_OPTIONS, useValue: JWT_OPTIONS
     },
-    JwtHelperService
+    JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

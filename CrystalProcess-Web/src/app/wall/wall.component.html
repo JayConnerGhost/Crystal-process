@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutAlign="start top">
+<div class="wall" fxLayout="row" fxLayoutAlign="center top">
+    <div *ngFor="let stage of stages" fxLayout="row" fxLayoutAlign="start">
+     <app-lane
+        [title]="stage.title"
+        [order]="stage.order"
+        [id]="stage.id"
+      ></app-lane>
+    </div>
+</div>
+</div>
